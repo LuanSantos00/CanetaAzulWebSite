@@ -38,8 +38,7 @@ export class HomeComponent implements OnInit {
       if(keyRoom.trim() != ""){
         this.gameDataService.getGameById(keyRoom).then(response => {
           if(response.exists()){
-            alert("entrou");
-            this.router.navigateByUrl('/listarJogo')
+            this.router.navigate(['/listarJogo', keyRoom]);
           }else{
             alert("Código Inválido");
           }
