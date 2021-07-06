@@ -331,185 +331,277 @@
   <div class="content" role="main">
   <br>
     
-    <div class="container">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                    <div class="panel-heading" style="font-weight: 900;">
-                        <label>Local:</label> {{local}}   
-                        <label>Horário:</label> {{horario}}
-                        <label>Data:</label> {{data}}
+  <div class="container">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading" style="font-weight: 900;">
+          <label>Local:</label> {{local}} <label>Horário:</label> {{horario}} <label>Data:</label> {{data}}
+        </div><br>
+        <div class="panel-body">
+          <table class="table table-condensed table-striped">
+            <thead>
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
+                <td></td>
+                <td>Goleiros</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="12" class="hiddenRow">
+                  <div class="accordian-body collapse" id="demo1">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr class="info">
+                          <th>Atleta</th>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                          <th>Ações</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let dados of goleiros">
+                          <td>{{dados.nome}}</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td><i>
+                            <svg style="cursor: pointer;" (click)="deleteGoleiros(dados.id)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-x-fill" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6.146-2.854a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                          </i></td>
+                        </tr>
+                        
+                        <tr>
+                          <td colspan="12" class="hiddenRow">
+                            <div class="accordian-body collapse" id="demo10">
+                              <table class="table table-striped"></table>
+                            </div>
+                          </td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </td>
+              </tr>
+              <tr data-toggle="collapse" data-target="#demo2" class="accordion-toggle">
+                <td></td>
+                <td>Zagueiros</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="12" class="hiddenRow">
+                  <div class="accordian-body collapse" id="demo2">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr class="info">
+                          <th>Atleta</th>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                          <th>Ações</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let dados of zagueiros">
+                          <td>{{dados.nome}}</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td><i>
+                            <svg style="cursor: pointer;" (click)="deleteZagueiros(dados.id)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-x-fill" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6.146-2.854a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                          </i></td>
+                        </tr>
+                        
+                        <tr>
+                          <td colspan="12" class="hiddenRow">
+                            <div class="accordian-body collapse" id="demo20">
+                              <table class="table table-striped"></table>
+                            </div>
+                          </td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </td>
+              </tr>
+              <tr data-toggle="collapse" data-target="#demo3" class="accordion-toggle">
+                <td></td>
+                <td>Laterais</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="12" class="hiddenRow">
+                  <div class="accordian-body collapse" id="demo3">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr class="info">
+                          <th>Atleta</th>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                          <th>Ações</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let dados of laterais">
+                          <td>{{dados.nome}}</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td><i>
+                            <svg style="cursor: pointer;" (click)="deleteLaterais(dados.id)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-x-fill" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6.146-2.854a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                          </i></td>
+                        </tr>
+                        
+                        <tr>
+                          <td colspan="12" class="hiddenRow">
+                            <div class="accordian-body collapse" id="demo30">
+                              <table class="table table-striped"></table>
+                            </div>
+                          </td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </td>
+              </tr>
+              <tr data-toggle="collapse" data-target="#demo4" class="accordion-toggle">
+                <td></td>
+                <td>Meias</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="12" class="hiddenRow">
+                  <div class="accordian-body collapse" id="demo4">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr class="info">
+                          <th>Atleta</th>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                          <th>Ações</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let dados of meias">
+                          <td>{{dados.nome}}</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td><i>
+                            <svg style="cursor: pointer;" (click)="deleteMeias(dados.id)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-x-fill" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6.146-2.854a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                          </i></td>
+                        </tr>
+                        
+                        <tr>
+                          <td colspan="12" class="hiddenRow">
+                            <div class="accordian-body collapse" id="demo40">
+                              <table class="table table-striped"></table>
+                            </div>
+                          </td>
+                        </tr>
 
-                    </div><br>
-            <div class="panel-body">
-                        <table class="table table-condensed table-striped">
-        <thead>
-            <tr>
+                        
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </td>
+              </tr>
+              <tr data-toggle="collapse" data-target="#demo5" class="accordion-toggle">
+                <td></td>
+                <td>Atacantes</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <td colspan="12" class="hiddenRow">
+                <div class="accordian-body collapse" id="demo5">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr class="info">
+                        <th>Atleta</th>
                         <th></th>
-              <th>Fist Name</th>
-              <th>Last Name</th>
-              <th>City</th>
-              <th>State</th>
-              <th>Status</th>
-            </tr>
-        </thead>
-    
-        <tbody>
-            <tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
-               <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
-                <td>Carlos</td>
-                <td>Mathias</td>
-                <td>Leme</td>
-                <td>SP</td>
-                  <td>new</td>
-            </tr>
-                
-            <tr>
-                <td colspan="12" class="hiddenRow">
-                                <div class="accordian-body collapse" id="demo1"> 
-                  <table class="table table-striped">
-                          <thead>
-                            <tr class="info">
-                                                        <th>Job</th>
-                                                        <th>Company</th>
-                                                        <th>Salary</th>		
-                                                        <th>Date On</th>	
-                                                        <th>Date off</th>	
-                                                        <th>Action</th>	
-                                                    </tr>
-                                                </thead>	
-                                              
-                                                <tbody>
-                                                    
-                            <tr data-toggle="collapse"  class="accordion-toggle" data-target="#demo10">
-                                                        <td> <a href="#">Enginner Software</a></td>
-                                                        <td>Google</td>
-                                                        <td>U$8.00000 </td>
-                                                        <td> 2016/09/27</td>
-                                                        <td> 2017/09/27</td>
-                                                        <td> 
-                                                            <a href="#" class="btn btn-default btn-sm">
-                                                      <i class="glyphicon glyphicon-cog"></i>
-                                                                </a>
-                                                        </td>
-                                                    </tr>
-                                                    
-                                                     <tr>
-                <td colspan="12" class="hiddenRow">
-                                <div class="accordian-body collapse" id="demo10"> 
-                  <table class="table table-striped">
-                          <thead>
-                            <tr>
-                                                        <td><a href="#"> XPTO 1</a></td>
-                                                        <td>XPTO 2</td>
-                                                        <td>Obs</td>
-                                                    </tr>
-                            <tr>
-                                                        <th>item 1</th>
-                                                        <th>item 2</th>
-                                                        <th>item 3 </th>
-                                                        <th>item 4</th>
-                                                        <th>item 5</th>
-                                                        <th>Actions</th>
-                                                    </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                                                        <td>item 1</td>
-                                                        <td>item 2</td>
-                                                        <td>item 3</td>
-                                                        <td>item 4</td>
-                                                        <td>item 5</td>
-                                                        <td>
-                                                                <a href="#" class="btn btn-default btn-sm">
-                                                  <i class="glyphicon glyphicon-cog"></i>
-                                                                </a>
-                                                        </td>
-                                                    </tr>
-                          </tbody>
-                       </table>
-                  
-                  </div> 
-              </td>
-            </tr>
-                                                                                                            
-                            <tr>
-                                                        <td>Scrum Master</td>
-                                                        <td>Google</td>
-                                                        <td>U$8.00000 </td>
-                                                        <td> 2016/09/27</td>
-                                                        <td> 2017/09/27</td>
-                                                        <td> <a href="#" class="btn btn-default btn-sm">
-                                                      <i class="glyphicon glyphicon-cog"></i>
-                                                                </a>
-                                                        </td>
-                                                    </tr>
-                                                    
-                                                            
-                            <tr>
-                                                        <td>Back-end</td>
-                                                        <td>Google</td>
-                                                        <td>U$8.00000 </td>
-                                                        <td> 2016/09/27</td>
-                                                        <td> 2017/09/27</td>
-                                                        <td> <a href="#" class="btn btn-default btn-sm">
-                                                      <i class="glyphicon glyphicon-cog"></i>
-                                                                </a>
-                                                        </td>
-                                                    </tr>
-                                                    
-                                                            
-                            <tr>
-                                                        <td>Front-end</td>
-                                                        <td>Google</td>
-                                                        <td>U$8.00000 </td>
-                                                        <td> 2016/09/27</td>
-                                                        <td> 2017/09/27</td>
-                                                        <td> <a href="#" class="btn btn-default btn-sm">
-                                                      <i class="glyphicon glyphicon-cog"></i>
-                                                                </a>
-                                                        </td>
-                                                    </tr>
-                                    
-                   
-                          </tbody>
-                       </table>
-                  
-                  </div> 
-              </td>
-            </tr>
-          
-          
-                
-            <tr data-toggle="collapse" data-target="#demo2" class="accordion-toggle">
-                 <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
-                 <td>Silvio</td>
-                <td>Santos</td>
-                <td>São Paulo</td>
-                <td>SP</td>
-              <td> new</td>
-            </tr>
-            <tr>
-                <td colspan="6" class="hiddenRow"><div id="demo2" class="accordian-body collapse">Demo2</div></td>
-            </tr>
-            <tr data-toggle="collapse" data-target="#demo3" class="accordion-toggle">
-                <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
-                <td>John</td>
-                <td>Doe</td>
-                <td>Dracena</td>
-                <td>SP</td>
-              <td> New</td>
-            </tr>
-            <tr>
-                <td colspan="6" class="hiddenRow"><div id="demo3" class="accordian-body collapse">Demo3 sadasdasdasdasdas</div></td>
-            </tr>
-        </tbody>
-    </table>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>Ações</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let dados of atacantes">
+                        <td>{{dados.nome}}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i>
+                          <svg style="cursor: pointer;" (click)="deleteAtacantes(dados.id)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-x-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6.146-2.854a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"/>
+                          </svg>
+                        </i></td>
+                      </tr>
+                      
+                      <tr>
+                        <td colspan="12" class="hiddenRow">
+                          <div class="accordian-body collapse" id="demo50">
+                            <table class="table table-striped"></table>
+                          </div>
+                        </td>
+                      </tr>
+ 
+                    </tbody>
+                  </table>
                 </div>
-            
-              </div> 
-            
-          </div>
+              </td>
+              
+            </tbody>
+          </table>
         </div>
+      </div>
+    </div>
+  </div>
            
     
            

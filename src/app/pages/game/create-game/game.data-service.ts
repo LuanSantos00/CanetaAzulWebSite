@@ -43,9 +43,20 @@ export class GameDataService {
         });
     }
 
-    async getAtletaByPos(key:string,posicao:string,){
+    async getAtletaByPos(key:string,posicao:string){
         return await this.db.database.ref(`/games/${key}/atletas/${posicao}`).get()
 
+    }
+    async deleteAtletaByPos(key:string,posicao:string,id:string){
+        return await this.db.database.ref(`/games/${key}/atletas/${posicao}/${id}`).remove()
+    }
+    async deleteTeste(key:string,posicao:string,id:string){
+        const gamesRef = this.db.database.ref(`/games/${key}/atletas/${posicao}/${id}`);
+
+        gamesRef.once('value', room => {
+            return gamesRef.remove();
+           // console.log(t);
+        })
     }
 
 }
