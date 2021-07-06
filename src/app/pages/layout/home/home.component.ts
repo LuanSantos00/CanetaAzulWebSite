@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GameDataService } from '../../game/create-game/game.data-service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers: [GameDataService]
+  providers: [GameDataService, ToastrService]
 })
 export class HomeComponent implements OnInit {
 
@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   public controls: any;
   
   constructor(private router: Router, 
+              private toastr: ToastrService,
               private gameDataService: GameDataService,
               private formBuilder: FormBuilder) { 
 
@@ -30,7 +31,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
   novoJogo(){
-    this.router.navigateByUrl('/teste');
+    this.router.navigateByUrl('/novoJogo');
   }
   
   handleRoomCode(controls:any){
@@ -40,11 +41,11 @@ export class HomeComponent implements OnInit {
           if(response.exists()){
             this.router.navigate(['/listarJogo', keyRoom]);
           }else{
-            alert("Código Inválido");
+            this.toastr.error("Código Inválido");
           }
         })
       }else{
-        alert("Informe o código");
+        this.toastr.error("Informe o código");
       }
   }
 

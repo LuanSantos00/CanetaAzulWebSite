@@ -12,7 +12,10 @@ import { CreateGameComponent } from './pages/game/create-game/create-game.compon
 import { NavigationComponent } from './pages/layout/navigation/navigation.component';
 import { HeaderComponent } from './pages/layout/header/header.component';
 import { HomeComponent } from './pages/layout/home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListGameComponent } from './pages/game/list-game/list-game.component';
+
+import { ToastrModule } from 'ngx-toastr'
 
 @NgModule({
   declarations: [
@@ -26,10 +29,12 @@ import { ListGameComponent } from './pages/game/list-game/list-game.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
