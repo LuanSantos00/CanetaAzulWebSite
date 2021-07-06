@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Game } from 'src/app/models/game';
 import { GameDataService } from './game.data-service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-game',
@@ -19,6 +20,7 @@ export class CreateGameComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private router: Router,
     private _gameDataService : GameDataService,
+    private _toast : ToastrService,
   ) { 
     this.jogoForm = this._formBuilder.group({
       local: [''],
@@ -62,6 +64,9 @@ export class CreateGameComponent implements OnInit {
 
     if(this.isValid(game)){
       this._gameDataService.insert(game);
+    }
+    else{
+      this._toast.error("Preencha todos os campos!");
     }
   }
 }
