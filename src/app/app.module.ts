@@ -12,6 +12,7 @@ import { CreateGameComponent } from './pages/game/create-game/create-game.compon
 import { NavigationComponent } from './pages/layout/navigation/navigation.component';
 import { HeaderComponent } from './pages/layout/header/header.component';
 import { HomeComponent } from './pages/layout/home/home.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HomeComponent } from './pages/layout/home/home.component';
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
