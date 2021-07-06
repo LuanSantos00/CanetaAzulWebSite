@@ -9,7 +9,7 @@ import { async, Observable } from "rxjs";
 })
 export class GameDataService {
      gamesRef: AngularFireList<Game>;
-
+    public keyResult: string = '';
     constructor(private db: AngularFireDatabase){
         this.gamesRef = db.list('/games');
     }
@@ -17,7 +17,8 @@ export class GameDataService {
     insert(game: Game){
         this.db.list('games').push(game)
         .then((result: any ) => {
-            console.log(result);
+            //console.log(result.key);
+            this.keyResult = result.key;
         })
     }
 

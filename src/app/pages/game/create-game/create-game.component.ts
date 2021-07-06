@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Game } from 'src/app/models/game';
 import { GameDataService } from './game.data-service';
 import { ToastrService } from 'ngx-toastr';
-
+import * as $ from 'jquery'
 @Component({
   selector: 'app-create-game',
   templateUrl: './create-game.component.html',
@@ -15,7 +15,8 @@ export class CreateGameComponent implements OnInit {
 
   public jogoForm: FormGroup;
   public controls: any;
-
+  public keyResult: string = '';
+   $: any;
   constructor(
     private _formBuilder: FormBuilder,
     private router: Router,
@@ -39,7 +40,7 @@ export class CreateGameComponent implements OnInit {
   ngOnInit(): void {
     
   }
-
+  
 
   returnHome(): void {
     this.router.navigateByUrl('/');
@@ -63,10 +64,14 @@ export class CreateGameComponent implements OnInit {
     game.horario = this.controls.horario.value;
 
     if(this.isValid(game)){
-      this._gameDataService.insert(game);
+       this._gameDataService.insert(game)
+      this.keyResult = this._gameDataService.keyResult;
+      console.log(this.keyResult);
     }
     else{
       this._toast.error("Preencha todos os campos!");
     }
   }
+
+  
 }
