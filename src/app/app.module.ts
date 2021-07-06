@@ -16,8 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListGameComponent } from './pages/game/list-game/list-game.component';
 
 import { ToastrModule } from 'ngx-toastr'
-import { BootstrapIconsModule } from 'ng-bootstrap-icons';
-import { allIcons } from 'ng-bootstrap-icons/icons';
+//import { BootstrapIconsModule } from 'ng-bootstrap-icons';
+//import { allIcons } from 'ng-bootstrap-icons/icons';
 
 @NgModule({
   declarations: [
@@ -33,14 +33,14 @@ import { allIcons } from 'ng-bootstrap-icons/icons';
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    BootstrapIconsModule.pick(allIcons),
+  //  BootstrapIconsModule.pick(allIcons),
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     ToastrModule.forRoot()
   ],
   exports: [
-    BootstrapIconsModule
+    //BootstrapIconsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

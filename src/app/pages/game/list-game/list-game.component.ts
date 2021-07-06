@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { GameDataService } from '../create-game/game.data-service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-list-game',
   templateUrl: './list-game.component.html',
   styleUrls: ['./list-game.component.css'],
-  providers: [GameDataService]
+  providers: [GameDataService,ToastrService]
 })
 export class ListGameComponent implements OnInit {
   public gameId: string = '';
@@ -21,6 +21,7 @@ export class ListGameComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
+    private toastr: ToastrService,
     private gameDataService: GameDataService
   ) { }
 
@@ -41,7 +42,7 @@ export class ListGameComponent implements OnInit {
     this.local = data.local;
     this.horario = data.horario;
     this.data = data.data;
-
+    
   }
   getGoleiros(key:string,posicao:string){
     
@@ -142,6 +143,11 @@ export class ListGameComponent implements OnInit {
       this.getAtacantes(this.gameId,"atacantes")
     });
     //this.gameDataService.deleteTeste(this.gameId,"goleiros",id)
+  }
+
+  copyCode(){
+    navigator.clipboard.writeText(this.gameId);
+    this.toastr.info("Código copiado!");
   }
 
 }

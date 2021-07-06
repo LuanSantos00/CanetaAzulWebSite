@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
               }
 
   ngOnInit(): void {
+    
   }
   novoJogo(){
     this.router.navigateByUrl('/novoJogo');
