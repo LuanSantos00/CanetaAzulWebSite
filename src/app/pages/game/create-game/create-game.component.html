@@ -306,12 +306,12 @@
   
   <!-- Toolbar -->
   <div class="toolbar" role="banner">
-    <img style="border-radius: 5px;"
+    <img style="border-radius: 5px; cursor: pointer;" (click)="returnForHome()"
     width="40"
     alt="Angular Logo"
     src="../../../../assets/logo.jpeg"
   />
-    <span>Caneta Azul</span>
+    <span style="cursor: pointer;" (click)="returnForHome()">Caneta Azul</span>
       <div class="spacer"></div>
       <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/angular" title="Twitter">
         <svg id="twitter-logo" height="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
@@ -381,9 +381,17 @@
         </button>
       </div>
       <div class="modal-body">
-        <form >
-        <label>{{keyResult}}</label>
-      </form>
+       
+          
+          
+            <div class="form-group row">
+              <label  class="col-sm-1 col-form-label" style="margin-top: -6px;">
+                <button (click)="copyCode()" class="btn btn-primary"><img src="../../../../assets//copy.svg"></button></label>
+              <div class="col-sm-7">
+                <input type="text" style="margin-left: 5px;font-weight: 700;" value="{{keyResult}}" class="form-control" readonly >
+              </div>   
+        
+     
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>

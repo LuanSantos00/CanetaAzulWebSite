@@ -80,8 +80,14 @@ export class CreateGameComponent implements OnInit {
     let button = document.getElementById('buttonFake');
     button?.click();
   }
+  copyCode(){
+    navigator.clipboard.writeText(this.keyResult);
+    this.toastr.info("Código copiado. \n Compartilhe com seu grupo!");
+  }
   
-  
+  returnForHome(){
+    this.router.navigateByUrl('/');
+  }
 
   
 }

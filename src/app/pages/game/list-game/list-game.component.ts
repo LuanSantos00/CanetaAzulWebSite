@@ -149,5 +149,8 @@ export class ListGameComponent implements OnInit {
     navigator.clipboard.writeText(this.gameId);
     this.toastr.info("Código copiado!");
   }
+  returnForHome(){
+    this.router.navigateByUrl('/');
+  }
 
 }
