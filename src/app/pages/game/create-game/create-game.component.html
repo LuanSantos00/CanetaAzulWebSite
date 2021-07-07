@@ -358,14 +358,12 @@
       <hr />
       
       <div>
-<<<<<<< HEAD
+
         <button type="button" style="float: right;"  class="btn btn-primary" (click)="newJogo()" >Criar</button>
         
         <!-- Botão fake -->
         <button type="button" style="float: right;display: none;" id="buttonFake" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" >Criar</button>
-=======
-        <button type="button" style="float: right;" class="btn btn-primary" (click)="newJogo()"  data-toggle="modal" data-target="#exampleModal" >Criar</button>
->>>>>>> fc88cea828b8f7eed588229b6467155f4f3b2909
+
       </div>
   
     </form>
@@ -375,18 +373,16 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-<<<<<<< HEAD
-        <h4 class="modal-title" id="exampleModalLabel">Aqui está o código do Jogo criado</h4>
-=======
+
         <h5 class="modal-title" id="exampleModalLabel">Novo jogo criado com sucesso</h5>
->>>>>>> fc88cea828b8f7eed588229b6467155f4f3b2909
+
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <form >
-        <label>{{controls.codigo.value}}</label>
+        <label>{{keyResult}}</label>
       </form>
       </div>
       <div class="modal-footer">
