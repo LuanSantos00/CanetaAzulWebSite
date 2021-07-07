@@ -5,6 +5,7 @@ import { Game } from 'src/app/models/game';
 import { GameDataService } from './game.data-service';
 import { ToastrService } from 'ngx-toastr';
 import * as $ from 'jquery'
+import { async } from 'rxjs';
 @Component({
   selector: 'app-create-game',
   templateUrl: './create-game.component.html',
@@ -56,7 +57,7 @@ export class CreateGameComponent implements OnInit {
     return result;
   }
 
-  newJogo(){
+  async newJogo() {
     let game: Game = new Game();
 
     game.local = this.controls.local.value;
@@ -64,14 +65,22 @@ export class CreateGameComponent implements OnInit {
     game.horario = this.controls.horario.value;
 
     if(this.isValid(game)){
-       this._gameDataService.insert(game)
+       await this._gameDataService.insert(game)
       this.keyResult = this._gameDataService.keyResult;
-      console.log(this.keyResult);
+      if(this.keyResult.trim() != "") { this.abreModal()}
+        
     }
     else{
       this._toast.error("Preencha todos os campos!");
     }
   }
+
+   abreModal() {
+    let button = document.getElementById('buttonFake');
+    button?.click();
+  }
+  
+  
 
   
 }

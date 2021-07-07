@@ -358,7 +358,10 @@
       <hr />
       
       <div>
-        <button type="button" style="float: right;" id="teste" class="btn btn-primary" (click)="newJogo()" data-toggle="modal" data-target="#exampleModal">Criar</button>
+        <button type="button" style="float: right;"  class="btn btn-primary" (click)="newJogo()" >Criar</button>
+        
+        <!-- Botão fake -->
+        <button type="button" style="float: right;display: none;" id="buttonFake" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" >Criar</button>
       </div>
   
     </form>
@@ -368,7 +371,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Informe o código do Jogo</h5>
+        <h4 class="modal-title" id="exampleModalLabel">Aqui está o código do Jogo criado</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
