@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Game } from 'src/app/models/game';
 import { GameDataService } from './game.data-service';
 import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-create-game',
   templateUrl: './create-game.component.html',
@@ -14,7 +15,7 @@ export class CreateGameComponent implements OnInit {
 
   public jogoForm: FormGroup;
   public controls: any;
-
+  public keyResult: string = '';
   constructor(
     private _formBuilder: FormBuilder,
     private router: Router,
@@ -25,12 +26,14 @@ export class CreateGameComponent implements OnInit {
       local: [''],
       data: [''],
       horario: [''],
+      codigo: ['']
     });
 
     this.controls = {
       local: this.jogoForm.get('local'),
       data: this.jogoForm.get('data'),
       horario: this.jogoForm.get('horario'),
+      codigo : this.jogoForm.get('codigo'),
     }
   }
   
@@ -38,7 +41,7 @@ export class CreateGameComponent implements OnInit {
   ngOnInit(): void {
     
   }
-
+  
 
   returnHome(): void {
     this.router.navigateByUrl('/');
@@ -54,7 +57,7 @@ export class CreateGameComponent implements OnInit {
     return result;
   }
 
-  newJogo(){
+  async newJogo() {
     let game: Game = new Game();
 
     game.local = this.controls.local.value;
@@ -62,9 +65,23 @@ export class CreateGameComponent implements OnInit {
     game.horario = this.controls.horario.value;
 
     if(this.isValid(game)){
-      this._gameDataService.insert(game);
-    }else{
-      this.toastr.error("Informe os dados corretamente")
+      await this._gameDataService.insert(game)
+      this.keyResult = this._gameDataService.keyResult;
+      if(this.keyResult.trim() != "") { this.abreModal()}
+      
+    }
+    else{
+      this.toastr.error("Preencha todos os campos!");
+
     }
   }
+
+   abreModal() {
+    let button = document.getElementById('buttonFake');
+    button?.click();
+  }
+  
+  
+
+  
 }

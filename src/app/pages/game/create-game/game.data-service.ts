@@ -9,15 +9,24 @@ import { async, Observable } from "rxjs";
 })
 export class GameDataService {
      gamesRef: AngularFireList<Game>;
-
+    public keyResult: string = '';
     constructor(private db: AngularFireDatabase){
         this.gamesRef = db.list('/games');
     }
 
-    insert(game: Game){
+    /* insert(game: Game){
         this.db.list('games').push(game)
-        .then((result: any ) => {
-            console.log(result);
+        .then(async (result: any ) => {
+            console.log(result.key);
+            this.keyResult = result.key;
+             await this.keyResult;
+        })
+    }*/
+
+    async insert(game: Game){
+        await this.db.list('games').push(game)
+        .then( (result: any ) => {
+            this.keyResult = result.key;
         })
     }
 
