@@ -27,12 +27,14 @@ export class CreateGameComponent implements OnInit {
       local: [''],
       data: [''],
       horario: [''],
+      codigo: ['']
     });
 
     this.controls = {
       local: this.jogoForm.get('local'),
       data: this.jogoForm.get('data'),
       horario: this.jogoForm.get('horario'),
+      codigo : this.jogoForm.get('codigo'),
     }
   }
   
@@ -65,8 +67,10 @@ export class CreateGameComponent implements OnInit {
 
     if(this.isValid(game)){
        this._gameDataService.insert(game)
-      this.keyResult = this._gameDataService.keyResult;
-      console.log(this.keyResult);
+      this.controls.codigo = this._gameDataService.keyResult;
+      
+      //$('#exampleModal').modal('show')
+
     }
     else{
       this._toast.error("Preencha todos os campos!");

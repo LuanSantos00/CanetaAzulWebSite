@@ -358,7 +358,7 @@
       <hr />
       
       <div>
-        <button type="button" style="float: right;" id="teste" class="btn btn-primary" (click)="newJogo()" data-toggle="modal" data-target="#exampleModal">Criar</button>
+        <button type="button" style="float: right;" class="btn btn-primary" (click)="newJogo()"  data-toggle="modal" data-target="#exampleModal" >Criar</button>
       </div>
   
     </form>
@@ -368,14 +368,14 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Informe o código do Jogo</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Novo jogo criado com sucesso</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <form >
-        <input class="form-control"  placeholder="Digite o código aqui" >
+        <label>{{controls.codigo.value}}</label>
       </form>
       </div>
       <div class="modal-footer">
