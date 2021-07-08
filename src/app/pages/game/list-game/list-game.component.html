@@ -320,7 +320,7 @@
         </svg>
       </a>
      
-     <div class="col-md"><span class="pull-right" (click)="copyCode()" style="cursor: pointer;"><img src="../../../../assets//copy.svg">{{gameId}}</span></div>
+     <div class="col-md"><span class="pull-right" (click)="copyCode()" style="cursor: pointer;margin-right: 10px;"><img src="../../../../assets//copy.svg">{{gameId}}</span></div>
       <a aria-label="Angular on YouTube" style="display: none;" target="_blank" rel="noopener" href="https://youtube.com/angular" title="YouTube">
         <svg id="youtube-logo" height="24" width="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff">
           <path d="M0 0h24v24H0V0z" fill="none"/>
@@ -348,7 +348,7 @@
                 <th></th>
                 <th></th>
                 <th></th>
-                <th><div class="col-md"><span class="pull-right" style="cursor:pointer" >Adicionar jogador</span></div></th>
+                <th><div class="col-md"><span class="pull-right" style="cursor:pointer" data-toggle="modal" data-target="#exampleModal" >Adicionar jogador</span></div></th>
               </tr>
             </thead>
             <tbody>
@@ -608,6 +608,55 @@
     
            
     
+  </div>
+
+   <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h5 class="modal-title" id="exampleModalLabel">Adicioneu seu nome na lista!</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       
+            <div class="form-group row">
+              <form >
+              <div class="form-group">
+                <label for="exampleInputEmail1">Nome: </label>
+                <input type="text" [formControl]="controls.nome" class="form-control"   placeholder="Informe seu nome">
+                
+              </div>
+              <div class="form-group">
+                <label >Informe sua posição: </label>
+                <select class="form-control" [formControl]="controls.posicao" >
+                  <option *ngFor="let pos of posicoes;let index"  >{{pos.value}}</option>
+                  
+                </select>
+              </div>
+            </form>
+            </div>
+                
+                 
+        
+     
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary" (click)="handleAddAtleta()" >Entrar</button>
+
+         <!-- Botão fake -->
+         <button type="button" style="float: right;display: none;" id="buttonFake" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" >Criar</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
   </div>
   
   

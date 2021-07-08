@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { GameDataService } from '../create-game/game.data-service';
 import { ToastrService } from 'ngx-toastr';
+import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-list-game',
   templateUrl: './list-game.component.html',
@@ -18,24 +19,50 @@ export class ListGameComponent implements OnInit {
   laterais: any[] = [];
   meias: any[] = [];
   atacantes: any[] = [];
+
+  public atletaForm: FormGroup;
+  public controls: any;
+
+ public posicoes = [
+   {value: "Selecione sua posição"},
+   {value: "Goleiro"},
+   {value: "Zagueiro"},
+   {value: "Lateral"},
+   {value: "Meia"},
+   {value: "Atacante"},
+ ];
+
   constructor(
     private router: Router,
+    private _formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private toastr: ToastrService,
     private gameDataService: GameDataService
-  ) { }
+  ) {
+    this.atletaForm = this._formBuilder.group({
+      nome: [''],
+      posicao: [''],
+      
+    });
+
+    this.controls = {
+      nome: this.atletaForm.get('nome'),
+      posicao: this.atletaForm.get('posicao'),
+    }
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => this.gameId = (params['id']));
     this.gameDataService.getGameById(this.gameId).then(response => {
       this.atualizarGrid(response.val())
     })
-    this.getGoleiros(this.gameId,"goleiros");
-    this.getZagueiros(this.gameId,"zagueiros");
-    this.getLaterais(this.gameId,"laterais");
-    this.getMeias(this.gameId,"meias");
-    this.getAtacantes(this.gameId,"atacantes");
-   //this.gameDataService.createAtletaByPos(this.gameId,"atacantes","Ayslan");
+    this.getGoleiros(this.gameId,"Goleiros");
+    this.getZagueiros(this.gameId,"Zagueiros");
+    this.getLaterais(this.gameId,"Laterais");
+    this.getMeias(this.gameId,"Meias");
+    this.getAtacantes(this.gameId,"Atacantes");
+   
+    this.atletaForm.controls.posicao.setValue("Selecione sua posição");
   }
 
   atualizarGrid(data:any){
@@ -44,46 +71,74 @@ export class ListGameComponent implements OnInit {
     this.data = data.data;
     
   }
+
+  async handleAddAtleta(){
+    let nome = this.controls.nome.value;
+    let posicao = this.controls.posicao.value ;
+    if(posicao != "Selecione sua posição"){
+      if(posicao != "Lateral")
+    {
+      posicao = this.controls.posicao.value + 's'
+    }else{
+      posicao = "Laterais"
+    }
+    }
+    
+   if(nome.trim()!= "" && posicao.trim()!= "" && posicao != "Selecione sua posição"){
+      await this.gameDataService.createAtletaByPos(this.gameId,posicao,nome).then( response => {
+        return this.handleChangeDataGrid(posicao);
+      });
+    }else {
+      this.toastr.error("Informe corretamente os campos.")
+    }
+  }
+  closeModal(){
+    let button = document.getElementById('buttonFake');
+    button?.click();
+    this.atletaForm.controls.nome.setValue("");
+    this.atletaForm.controls.posicao.setValue("Selecione sua posição");
+  }
+
   getGoleiros(key:string,posicao:string){
     
     this.gameDataService.getAtletaByPos(key,posicao).then(response => {
       response.forEach((item) => {
-      //  console.log(item.val())
+      
         this.goleiros.push({
           id: item.key || null,
           nome: item.val() || null
         })
       });
     });
-   // console.log(this.goleiros);
+   
   }
   deleteGoleiros(id:string){
-    this.gameDataService.deleteAtletaByPos(this.gameId,"goleiros",id).then(response => {
+    this.gameDataService.deleteAtletaByPos(this.gameId,"Goleiros",id).then(response => {
       this.goleiros = [];
-      this.getGoleiros(this.gameId,"goleiros")
+      this.getGoleiros(this.gameId,"Goleiros")
     });
-    //this.gameDataService.deleteTeste(this.gameId,"goleiros",id)
+    
   }
 
   getZagueiros(key:string,posicao:string){
     
     this.gameDataService.getAtletaByPos(key,posicao).then(response => {
       response.forEach((item) => {
-      //  console.log(item.val())
+      
         this.zagueiros.push({
           id: item.key || null,
           nome: item.val() || null
         })
       });
     });
-   // console.log(this.goleiros);
+  
   }
   deleteZagueiros(id:string){
-    this.gameDataService.deleteAtletaByPos(this.gameId,"zagueiros",id).then(response => {
+    this.gameDataService.deleteAtletaByPos(this.gameId,"Zagueiros",id).then(response => {
       this.zagueiros = [];
-      this.getZagueiros(this.gameId,"zagueiros")
+      this.getZagueiros(this.gameId,"Zagueiros")
     });
-    //this.gameDataService.deleteTeste(this.gameId,"goleiros",id)
+    
   }
 
   getLaterais(key:string,posicao:string){
@@ -99,11 +154,11 @@ export class ListGameComponent implements OnInit {
   }
 
   deleteLaterais(id:string){
-    this.gameDataService.deleteAtletaByPos(this.gameId,"laterais",id).then(response => {
+    this.gameDataService.deleteAtletaByPos(this.gameId,"Laterais",id).then(response => {
       this.laterais = [];
-      this.getLaterais(this.gameId,"laterais")
+      this.getLaterais(this.gameId,"Laterais")
     });
-    //this.gameDataService.deleteTeste(this.gameId,"goleiros",id)
+    
   }
 
   getMeias(key:string,posicao:string){
@@ -118,11 +173,11 @@ export class ListGameComponent implements OnInit {
     });
   }
   deleteMeias(id:string){
-    this.gameDataService.deleteAtletaByPos(this.gameId,"meias",id).then(response => {
+    this.gameDataService.deleteAtletaByPos(this.gameId,"Meias",id).then(response => {
       this.meias = [];
-      this.getMeias(this.gameId,"meias")
+      this.getMeias(this.gameId,"Meias")
     });
-    //this.gameDataService.deleteTeste(this.gameId,"goleiros",id)
+    
   }
 
   getAtacantes(key:string,posicao:string){
@@ -138,11 +193,11 @@ export class ListGameComponent implements OnInit {
   }
 
   deleteAtacantes(id:string){
-    this.gameDataService.deleteAtletaByPos(this.gameId,"atacantes",id).then(response => {
+    this.gameDataService.deleteAtletaByPos(this.gameId,"Atacantes",id).then(response => {
       this.atacantes = [];
-      this.getAtacantes(this.gameId,"atacantes")
+      this.getAtacantes(this.gameId,"Atacantes")
     });
-    //this.gameDataService.deleteTeste(this.gameId,"goleiros",id)
+    
   }
 
   copyCode(){
@@ -151,6 +206,47 @@ export class ListGameComponent implements OnInit {
   }
   returnForHome(){
     this.router.navigateByUrl('/');
+  }
+
+  handleChangeDataGrid(posicao: string){
+    switch (posicao) {
+      case "Goleiros":
+        this.toastr.info("Atleta Adicionado!")
+        this.closeModal();
+        this.goleiros = [];
+        this.getGoleiros(this.gameId,"Goleiros");
+        break;
+        case "Zagueiros":
+          this.toastr.info("Atleta Adicionado!")
+          this.closeModal();
+          this.zagueiros = [];
+          this.getZagueiros(this.gameId,"Zagueiros");
+          break;
+    
+          case "Laterais":
+            this.toastr.info("Atleta Adicionado!")
+            this.closeModal();
+            this.laterais = [];
+            this.getLaterais(this.gameId,"Laterais");
+           break;
+    
+        case "Meias":
+          this.toastr.info("Atleta Adicionado!")
+          this.closeModal();
+          this.meias = [];
+          this.getMeias(this.gameId,"Meias");
+        break;
+    
+        case "Atacantes":
+          this.toastr.info("Atleta Adicionado!")
+          this.closeModal();
+          this.atacantes = [];
+          this.getAtacantes(this.gameId,"Atacantes");
+        break;
+    
+      default:
+        break;
+    }
   }
 
 }

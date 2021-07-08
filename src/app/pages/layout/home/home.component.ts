@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
       if(keyRoom.trim() != ""){
         this.gameDataService.getGameById(keyRoom).then(response => {
           if(response.exists()){
+            this.closeModal()
             this.router.navigate(['/listarJogo', keyRoom]);
           }else{
             this.toastr.error("Código Inválido");
@@ -48,6 +49,11 @@ export class HomeComponent implements OnInit {
       }else{
         this.toastr.error("Informe o código");
       }
+  }
+
+  closeModal(){
+    let button = document.getElementById('buttonFake');
+    button?.click();
   }
 
 }

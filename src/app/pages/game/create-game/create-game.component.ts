@@ -80,7 +80,7 @@ export class CreateGameComponent implements OnInit {
     let button = document.getElementById('buttonFake');
     button?.click();
   }
-  async copyCode(){
+   copyCode(){
     let data = this.controls.data.value;
     let stringCopy = `Este código é referente ao jogo do dia ${data}: ${this.keyResult}`
     navigator.clipboard.writeText(stringCopy);
