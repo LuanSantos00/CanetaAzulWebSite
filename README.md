@@ -1,28 +1,36 @@
-# CanetaAzulWebSite
+<h1>Caneta Azul Web Site</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.1.
+### Aplicação desenvolvida para facilitar a organização de amistosos de um time de amigos.
 
-## Development server
+## Tecnologias Utilizadas
+* Angular
+* Bootstrap  
+* Firebase 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Iniciar o projeto
+* Clone o Repositório
+* Execute o npm install
+* Execute o ng-serve
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Telas
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Tela Inicial
+<img src="./images-screens/telaInicial.png">
 
-## Running unit tests
+### Tela Novo Jogo
+<img src="./images-screens/novoJogo.png">
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Tela Entrar em um Jogo
+<img src="./images-screens/entrarJogo.png">
 
-## Running end-to-end tests
+### Tela Principal
+<img src="./images-screens/telaPrincipal.png">
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Tela Adicionar nome na lista
+<img src="./images-screens/adicionarNaLista.png">
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# CanetaAzulWebSite
+### Aplicação Publicada
+<label>Link: <a href="https://canetaazulwebsite.web.app/" target="_blank">Canteta Azul Web Site</a></label>
